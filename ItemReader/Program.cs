@@ -1,16 +1,12 @@
+using ItemReader.Interfaces;
+using ItemReader.ScreenShotter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ItemReader;
-using System.ComponentModel.Design;
-using ItemReader.ScreenShotter;
-using ItemReader.InventoryParser;
-using ItemReader.InventoryChecker;
-using ItemReader.Interfaces;
 
 namespace ItemReader
 {
-    static class Program
-    {
+    static class Program {
+
         public static IServiceProvider? ServiceProvider { get; private set; }
 
         static IHostBuilder CreateHostBuilder()
@@ -37,5 +33,6 @@ namespace ItemReader
 
             Application.Run(ServiceProvider.GetRequiredService<Form1>());
         }
+
     }
 }

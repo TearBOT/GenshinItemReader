@@ -43,7 +43,7 @@ namespace ItemReader.WindowCatcher
         {
             do
             {
-                _gameWindow = FindWindow(IntPtr.Zero, "BagIcon.png - Paint");
+                _gameWindow = FindWindow(IntPtr.Zero, Resources.Resources.GAME_WINDOW);
                 Thread.Sleep(1000);
             } while (_gameWindow.ToInt32() == 0);
             SetForegroundWindow(_gameWindow);

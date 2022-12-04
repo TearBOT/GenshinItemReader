@@ -33,7 +33,7 @@ namespace ItemReader.Utility
                 captureGraphics.Dispose();
 
                 // DEBUG
-                screenShot.Save($@"C:\Users\Mini-Soo\Projects\test\test_{_screenShotId}.png", ImageFormat.Png);
+                screenShot.Save($@"{Resources.Resources.DEBUG_FOLDER}\test_{_screenShotId}.png", ImageFormat.Png);
                 _screenShotId++;
 
                 return screenShot;
@@ -54,7 +54,7 @@ namespace ItemReader.Utility
             fullScreen.Dispose();
 
             // DEBUG
-            partialScreen.Save($@"C:\Users\Mini-Soo\Projects\test\test_{_screenShotId}.png", ImageFormat.Png);
+            partialScreen.Save($@"{Resources.Resources.DEBUG_FOLDER}\test_{_screenShotId}.png", ImageFormat.Png);
             _screenShotId++;
 
             return partialScreen;

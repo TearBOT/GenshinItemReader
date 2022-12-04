@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ItemReader {
+namespace ItemReader.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ItemReader {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ItemReader.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ItemReader.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -67,6 +67,66 @@ namespace ItemReader {
             get {
                 object obj = ResourceManager.GetObject("BagIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C:\Users\Mini-Soo\Projects\test.
+        /// </summary>
+        internal static string DEBUG_FOLDER {
+            get {
+                return ResourceManager.GetString("DEBUG_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BagIcon.png - Paint.
+        /// </summary>
+        internal static string GAME_WINDOW {
+            get {
+                return ResourceManager.GetString("GAME_WINDOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mora
+        ///MysticEnhancementOre
+        ///FineEnhancementOre
+        ///EnhancementOre
+        ///HerosWit
+        ///AdventurersExperience
+        ///WanderersAdvice
+        ///SlimeConcentrate
+        ///SlimeSecretions
+        ///SlimeCondensate
+        ///OminousMask
+        ///StainedMask
+        ///DamagedMask
+        ///ForbiddenCurseScroll
+        ///SealedScroll
+        ///DiviningScroll
+        ///WeatheredArrowhead
+        ///SharpArrowhead
+        ///FirmArrowhead
+        ///BlackCrystalHorn
+        ///BlackBronzeHorn
+        ///HeavyHorn
+        ///LeyLineSprout
+        ///DeadLeyLineLeaves
+        ///DeadLeyLineBranch
+        ///ChaosCore
+        ///ChaosCircuit
+        ///ChaosDevice
+        ///MistGrassWick
+        ///MistGrass
+        ///MistGrassPollen
+        ///InspectorsSacrificialKnife
+        ///AgentsSacrificialKnife
+        ///Hunte [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ItemList {
+            get {
+                return ResourceManager.GetString("ItemList", resourceCulture);
             }
         }
     }
