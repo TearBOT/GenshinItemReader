@@ -80,7 +80,7 @@ namespace ItemReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BagIcon.png - Paint.
+        ///   Looks up a localized string similar to Genshin Impact.
         /// </summary>
         internal static string GAME_WINDOW {
             get {

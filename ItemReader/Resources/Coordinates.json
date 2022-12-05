@@ -1,43 +1,92 @@
 {
-  "bag": {
+  "bagIcon": {
     "start": {
-      "x": 52,
-      "y": 22
+      "x": 56,
+      "y": 48
     },
     "end": {
-      "x": 99,
-      "y": 73
+      "x": 103,
+      "y": 99
     },
     "width": 47,
     "height": 51
   },
-  "item": {
-    "start": {
-      "x": 119,
-      "y": 121
-    },
-    "end": {
-      "x": 1265,
-      "y": 878
-    },
-    "spacing": 22,
-    "width": 124,
-    "height": {
-      "image": 124,
-      "number": 29,
-      "total": 153
-    }
+  "items": {
+    "first_row": [
+      {
+        "start": {
+          "x": 122,
+          "y": 147
+        },
+        "end": {
+          "x": 244,
+          "y": 269
+        },
+        "width": 123,
+        "height": {
+          "image": 123,
+          "number": 27
+        }
+      },
+      {
+        "start": {
+          "x": 268,
+          "y": 147
+        },
+        "end": {
+          "x": 390,
+          "y": 269
+        },
+        "width": 123,
+        "height": {
+          "image": 123,
+          "number": 27
+        }
+      }
+    ],
+    "second_row": [
+      {
+        "start": {
+          "x": 122,
+          "y": 322
+        },
+        "end": {
+          "x": 244,
+          "y": 444
+        },
+        "width": 123,
+        "height": {
+          "image": 123,
+          "number": 27
+        }
+      },
+      {
+        "start": {
+          "x": 268,
+          "y": 322
+        },
+        "end": {
+          "x": 390,
+          "y": 444
+        },
+        "width": 123,
+        "height": {
+          "image": 123,
+          "number": 27
+        }
+      }
+    ]
   },
   "mora": {
     "start": {
-      "x": 340,
-      "y": 1000
-    }
+      "x": 395,
+      "y": 1028
+    },
     "end": {
-      "x": 530,
-      "y": 1040
-    }
-    "width": 190,
-    "height": 40
+      "x": 560,
+      "y": 1060
+    },
+    "width": 165,
+    "height": 32
   }
 }

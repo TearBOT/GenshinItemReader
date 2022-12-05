@@ -56,11 +56,12 @@ namespace ItemReader.ScreenShotter
         public bool isInventoryOpen()
         {
             Bitmap inventoryScreen = _screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, _bagIconCoords);
-            Bitmap bagIcon = new Bitmap("C:\\Users\\Mini-Soo\\Projects\\GenshinItemReader\\ItemReader\\Resources\\BagIcon.png");
+            Bitmap bagIcon = new Bitmap(Resources.Resources.BagIcon);
 
             bool result = _imageComparator.SameImage(inventoryScreen, bagIcon);
-
-            inventoryScreen.Dispose();
+            if (inventoryScreen != null) {
+                inventoryScreen.Dispose();
+            }
             bagIcon.Dispose();
 
             return result;

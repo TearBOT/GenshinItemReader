@@ -14,33 +14,28 @@ namespace ItemReader.Utility
 
         public Bitmap TakeFullScreenShot(IntPtr gameWindow, Rect windowBounds)
         {
-            if (gameWindow == IntPtr.Zero || windowBounds.topLeft.IsEmpty) {
+            if (gameWindow == IntPtr.Zero || windowBounds.topLeft.IsEmpty)
+            {
                 return null;
             }
 
-            SetForegroundWindow(gameWindow);
-            try {
-                Bitmap screenShot = new Bitmap(
-                    windowBounds.rectSize.Width,
-                    windowBounds.rectSize.Height,
-                    PixelFormat.Format32bppArgb
-                );
+            SetToForground(gameWindow);
+            Bitmap screenShot = new Bitmap(
+                windowBounds.rectSize.Width,
+                windowBounds.rectSize.Height
+            );
 
-                Graphics captureGraphics = Graphics.FromImage(screenShot);
-                IntPtr hdcBMP = captureGraphics.GetHdc();
-                PrintWindow(gameWindow, hdcBMP, 0);
-                captureGraphics.ReleaseHdc(hdcBMP);
+            using (Graphics captureGraphics = Graphics.FromImage(screenShot))
+            {
+                captureGraphics.CopyFromScreen(windowBounds.topLeft, Point.Empty, screenShot.Size);
                 captureGraphics.Dispose();
-
-                // DEBUG
-                screenShot.Save($@"{Resources.Resources.DEBUG_FOLDER}\test_{_screenShotId}.png", ImageFormat.Png);
-                _screenShotId++;
-
-                return screenShot;
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-                throw new Exception();
             }
+
+            // DEBUG
+            screenShot.Save($@"{Resources.Resources.DEBUG_FOLDER}\test_{_screenShotId}.png", ImageFormat.Png);
+            _screenShotId++;
+
+            return screenShot;
         }
 
         public Bitmap TakePartialScreenShot(IntPtr gameWindow, Rect windowBounds, Rectangle remain)
@@ -61,6 +56,12 @@ namespace ItemReader.Utility
         }
 
         /* PRIVATE METHOD(S) */
+
+        private static void SetToForground(IntPtr gameWindow)
+        {
+            SetForegroundWindow(gameWindow);
+            Thread.Sleep(20);
+        }
 
         [DllImport("user32.dll")]
         private static extern IntPtr SetForegroundWindow(IntPtr ptr);

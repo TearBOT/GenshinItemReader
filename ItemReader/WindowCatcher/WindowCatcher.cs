@@ -46,7 +46,6 @@ namespace ItemReader.WindowCatcher
                 _gameWindow = FindWindow(IntPtr.Zero, Resources.Resources.GAME_WINDOW);
                 Thread.Sleep(1000);
             } while (_gameWindow.ToInt32() == 0);
-            SetForegroundWindow(_gameWindow);
             Rectangle tmpBound;
             do
             {
@@ -62,8 +61,6 @@ namespace ItemReader.WindowCatcher
 
         [DllImport("user32.dll")]
         private static extern IntPtr FindWindow(IntPtr ptr, string lpWindowName);
-        [DllImport("user32.dll")]
-        private static extern IntPtr SetForegroundWindow(IntPtr ptr);
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr ptr, out Rectangle lpRect);
     }

@@ -125,7 +125,7 @@
     <value>C:\Users\Mini-Soo\Projects\test</value>
   </data>
   <data name="GAME_WINDOW" xml:space="preserve">
-    <value>BagIcon.png - Paint</value>
+    <value>Genshin Impact</value>
   </data>
   <data name="ItemList" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>itemlist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
