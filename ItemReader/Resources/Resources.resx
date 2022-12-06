@@ -121,8 +121,11 @@
   <data name="BagIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bagicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Coordinates" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>coordinates.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="DEBUG_FOLDER" xml:space="preserve">
-    <value>C:\Users\Mini-Soo\Projects\test</value>
+    <value>C:\Users\Mini-Soo\Projects\test\Demo</value>
   </data>
   <data name="GAME_WINDOW" xml:space="preserve">
     <value>Genshin Impact</value>

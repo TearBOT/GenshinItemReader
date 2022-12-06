@@ -9,56 +9,50 @@ namespace ItemReader.ScreenShotter
 
         /* CLASS VARIABLE(S) */
 
-        private Point _materialTabClick;
-        private Point _specialitiesTabClick;
-        private Rectangle _bagIconCoords;
-        public IntPtr _gameWindow { get; set; }
-        public Rect _windowBounds { get; set; }
-        private ScreenShotHelper _screenShotter { get; set; }
-        private MouseEmulator _mouseEmulator { get; set; }
-        private ImageComparator _imageComparator { get; set; }
+        private Point _MaterialTabClick;
+        private Point _TopLeftItem;
+        private Point _BottomLeftItem;
+        private Point _SpecialitiesTabClick;
+        private AllCoordinates _AllCoordinates;
+        private IntPtr _GameWindow { get; set; }
+        private Rect _WindowBounds { get; set; }
+
 
         /* PUBLIC METHOD(S) */
+        public InventoryScreener() { }
 
-        public InventoryScreener()
+        public InventoryScreener(IntPtr gameWindow, Rect windowBounds, AllCoordinates allCoordinates)
         {
-            _screenShotter = new ScreenShotHelper();
-            _mouseEmulator = new MouseEmulator();
-            _imageComparator = new ImageComparator();
-        }
-
-        public InventoryScreener(IntPtr gameWindow, Rect windowBounds)
-        {
-            _screenShotter = new ScreenShotHelper();
-            _mouseEmulator = new MouseEmulator();
-            _imageComparator = new ImageComparator();
-            setGameWindow(gameWindow);
-            setWindowBounds(windowBounds);
+            setWindowInfo(gameWindow, windowBounds, allCoordinates);
         }
 
         public void setGameWindow(IntPtr gameWindow)
         {
-            _gameWindow = gameWindow;
+            _GameWindow = gameWindow;
         }
+
         public void setWindowBounds(Rect windowBounds)
         {
-            _windowBounds = windowBounds;
-            _materialTabClick = new Point(550 + _windowBounds.topLeft.X, 90 + _windowBounds.topLeft.Y);
-            _specialitiesTabClick = new Point(800 + _windowBounds.topLeft.X, 90 + _windowBounds.topLeft.Y);
-            _bagIconCoords = new Rectangle(13, 152, 47, 51);
+            _WindowBounds = windowBounds;
+            _TopLeftItem = new Point(_WindowBounds.topLeft.X + 180, _WindowBounds.topLeft.Y + 180);
+            _BottomLeftItem = new Point(_WindowBounds.topLeft.X + 180, _WindowBounds.topLeft.Y + 900);
+            _MaterialTabClick = new Point(_WindowBounds.topLeft.X + 770, _WindowBounds.topLeft.Y + 65);
+            _SpecialitiesTabClick = new Point(_WindowBounds.topLeft.X + 960, _WindowBounds.topLeft.Y + 65);
         }
-        public void setWindowInfo(IntPtr gameWindow, Rect windowBounds)
+
+        public void setWindowInfo(IntPtr gameWindow, Rect windowBounds, AllCoordinates allCoordinates)
         {
             setGameWindow(gameWindow);
             setWindowBounds(windowBounds);
+            _AllCoordinates = allCoordinates;
         }
 
         public bool isInventoryOpen()
         {
-            Bitmap inventoryScreen = _screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, _bagIconCoords);
+            Bitmap inventoryScreen = ScreenShotHelper.TakePartialScreenShot(_GameWindow, _WindowBounds, new Rectangle(_AllCoordinates.BagIcon.topLeft, _AllCoordinates.BagIcon.rectSize));
             Bitmap bagIcon = new Bitmap(Resources.Resources.BagIcon);
 
-            bool result = _imageComparator.SameImage(inventoryScreen, bagIcon);
+            bool result = ImageComparator.ComapreImages(inventoryScreen, bagIcon);
             if (inventoryScreen != null) {
                 inventoryScreen.Dispose();
             }
@@ -67,24 +61,64 @@ namespace ItemReader.ScreenShotter
             return result;
         }
 
-        public List<Bitmap> getItems()
+        public IEnumerable<Bitmap> GetFullInventory()
         {
-            List<Bitmap> items = new List<Bitmap>();
+            List<Bitmap> FullScreens = new List<Bitmap>();
+            List<Bitmap> Items = new List<Bitmap>();
 
-            items.Add(_screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, new Rectangle(8, 30, 900, 120)));
-            MouseEmulator.MouseLeftClick(_materialTabClick);
-            items.Add(_screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, _bagIconCoords));
-            items.Add(_screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, new Rectangle(8, 30, 900, 120)));
+            FullScreens.AddRange(GetItemsFromTab(_MaterialTabClick, 8));
+            FullScreens.AddRange(GetItemsFromTab(_SpecialitiesTabClick, 4));
 
-            Thread.Sleep(1000);
+            return Items;
+        }
 
-            MouseEmulator.MouseScrollDown(_specialitiesTabClick, 1);
-            items.Add(_screenShotter.TakePartialScreenShot(_gameWindow, _windowBounds, new Rectangle(8, 30, 900, 120)));
-
-            return items;
+        public IEnumerable<Bitmap> GetEachItems(List<Bitmap> FullScreens)
+        {
+            List<Bitmap> Items = new List<Bitmap>();
+            int PixelShift = 0;
+            foreach (Bitmap bitmap in FullScreens) {
+                foreach (var ItemLine in _AllCoordinates.Items) {
+                    foreach (var Item in ItemLine) {
+                        Items.Add(
+                            ScreenShotHelper.TakePartialScreenShot(
+                                _GameWindow,
+                                _WindowBounds,
+                                new Rectangle(Item.topLeft, Item.rectSize)
+                            )
+                        );
+                    }
+                }
+                PixelShift++;
+                if ( PixelShift % 4 == 0 ) {
+                    PixelShift++;
+                }
+            }
+            return Items;
         }
 
         /* PRIVATE METHOD(S) */
+
+        private IEnumerable<Bitmap> GetItemsFromTab(Point tab, int loops)
+        {
+            List<Bitmap> FullScreens = new List<Bitmap>();
+
+            MouseEmulator.MouseLeftClick(_GameWindow, tab);
+            Thread.Sleep(400);
+            MouseEmulator.MouseScrollUp(_GameWindow, _TopLeftItem, 400);
+            MouseEmulator.MouseLeftClick(_GameWindow, _BottomLeftItem);
+
+            // DEBUG
+            for (var i = 0; i < loops; i++) {
+                Thread.Sleep(50);
+                MouseEmulator.MouseScrollDown(_GameWindow, _BottomLeftItem, 39);
+                MouseEmulator.MouseLeftClick(_GameWindow, _BottomLeftItem);
+                ScreenShotHelper.TakeFullScreenShot(_GameWindow, _WindowBounds);
+            }
+            MouseEmulator.MouseLeftClick(_GameWindow, _TopLeftItem);
+            ScreenShotHelper.TakeFullScreenShot(_GameWindow, _WindowBounds);
+
+            return FullScreens;
+        }
 
     }
 }

@@ -1,9 +1,4 @@
 ﻿using ItemReader.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ItemReader.Interfaces
 {
@@ -12,7 +7,8 @@ namespace ItemReader.Interfaces
         bool isInventoryOpen();
         void setGameWindow(IntPtr gameWindow);
         void setWindowBounds(Rect windowBounds);
-        void setWindowInfo(IntPtr gameWindow, Rect windowBounds);
-        List<Bitmap> getItems();
+        void setWindowInfo(IntPtr gameWindow, Rect windowBounds, AllCoordinates allCoordinates);
+        IEnumerable<Bitmap> GetFullInventory();
+        IEnumerable<Bitmap> GetEachItems(List<Bitmap> FullScreens);
     }
 }

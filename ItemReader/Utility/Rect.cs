@@ -20,6 +20,15 @@
             rectSize.Width = x2 - x;
             rectSize.Height = y2 - y;
         }
+        public Rect(Start start, End end, Dimensions size)
+        {
+            topLeft.X = start.x;
+            topLeft.Y = start.y;
+            bottomRight.X = end.x;
+            bottomRight.Y = end.y;
+            rectSize.Width = size.width;
+            rectSize.Height = size.height;
+        }
 
         /* PRIVATE METHOD(S) */
 
