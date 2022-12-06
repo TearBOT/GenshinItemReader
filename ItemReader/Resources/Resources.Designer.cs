@@ -71,7 +71,17 @@ namespace ItemReader.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Mini-Soo\Projects\test.
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Coordinates {
+            get {
+                object obj = ResourceManager.GetObject("Coordinates", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C:\Users\Mini-Soo\Projects\test\Demo.
         /// </summary>
         internal static string DEBUG_FOLDER {
             get {

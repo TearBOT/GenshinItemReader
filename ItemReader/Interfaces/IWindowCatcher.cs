@@ -11,7 +11,7 @@ namespace ItemReader.Interfaces
     internal interface IWindowCatcher
     {
         string testMessage();
-        void catchGameWindow();
+        bool catchGameWindow();
         IntPtr getGameWindow();
         Rect getWindowBouds();
     }

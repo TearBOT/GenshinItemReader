@@ -11,14 +11,7 @@ namespace ItemReader.WindowCatcher
         private Rect _windowBounds;
 
         public WindowCatcher()
-        {
-            catchGameWindow();
-        }
-
-        public WindowCatcher(IntPtr gameWindow)
-        {
-            _gameWindow = gameWindow;
-        }
+        { }
 
         public string testMessage()
         {
@@ -39,7 +32,7 @@ namespace ItemReader.WindowCatcher
             _gameWindow = gameWindow;
         }
 
-        public void catchGameWindow()
+        public bool catchGameWindow()
         {
             do
             {
@@ -53,6 +46,10 @@ namespace ItemReader.WindowCatcher
                 Thread.Sleep(1000);
             } while (tmpBound.X < 0);
             _windowBounds = new Rect(tmpBound.X, tmpBound.Y, tmpBound.Width, tmpBound.Height);
+            if (_gameWindow != IntPtr.Zero && _windowBounds.topLeft != Point.Empty) {
+                return true;
+            }
+            return false;
         }
 
         public void Dispose() { }

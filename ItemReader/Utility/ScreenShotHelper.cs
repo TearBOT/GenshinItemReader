@@ -8,11 +8,11 @@ namespace ItemReader.Utility
 
         /* CLASS VARIABLE(S) */
 
-        private int _screenShotId = 0;
+        private static int _screenShotId = 0;
 
         /* PUBLIC METHOD(S) */
 
-        public Bitmap TakeFullScreenShot(IntPtr gameWindow, Rect windowBounds)
+        public static Bitmap TakeFullScreenShot(IntPtr gameWindow, Rect windowBounds)
         {
             if (gameWindow == IntPtr.Zero || windowBounds.topLeft.IsEmpty)
             {
@@ -38,7 +38,7 @@ namespace ItemReader.Utility
             return screenShot;
         }
 
-        public Bitmap TakePartialScreenShot(IntPtr gameWindow, Rect windowBounds, Rectangle remain)
+        public static  Bitmap TakePartialScreenShot(IntPtr gameWindow, Rect windowBounds, Rectangle remain)
         {
             if (gameWindow == IntPtr.Zero || windowBounds.topLeft.IsEmpty || remain.IsEmpty)
                 return null;
