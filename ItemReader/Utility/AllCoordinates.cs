@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Text.Json;
 
 namespace ItemReader.Utility
 {
@@ -19,13 +12,13 @@ namespace ItemReader.Utility
 
     internal class ReadCoordinates
     {
-        public BagIcon bag_icon { get; set; }
-        public List<List<Item>> items { get; set; }
-        public List<List<Item>> last_line { get; set; }
-        public Mora mora { get; set; }
+        public BagIconPos BagIconCoordinates { get; set; }
+        public List<List<Item>> ItemsCoordinates { get; set; }
+        public List<List<Item>> LastLineItemsCoordinates { get; set; }
+        public Mora MoraCoordinates { get; set; }
     }
 
-    public class BagIcon
+    public class BagIconPos
     {
         public Start start { get; set; }
         public End end { get; set; }
