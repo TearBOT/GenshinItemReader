@@ -1,5 +1,4 @@
 using ItemReader.Interfaces;
-using ItemReader.ScreenShotter;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,10 +13,10 @@ namespace ItemReader
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
                     services.AddTransient<IWindowCatcher, WindowCatcher.WindowCatcher>();
-                    services.AddTransient<IInventoryScreener, InventoryScreener>();
+                    services.AddTransient<IInventoryScreener, InventoryScreener.InventoryScreener>();
                     services.AddTransient<IInventoryParser, InventoryParser.InventoryParser>();
                     services.AddTransient<IInventoryChecker, InventoryChecker.InventoryChecker>();
-                    services.AddTransient<Form1>();
+                    services.AddTransient<MainForm>();
                 });
         }
 
@@ -31,7 +30,7 @@ namespace ItemReader
             var host = CreateHostBuilder().Build();
             ServiceProvider = host.Services;
 
-            Application.Run(ServiceProvider.GetRequiredService<Form1>());
+            Application.Run(ServiceProvider.GetRequiredService<MainForm>());
         }
 
     }

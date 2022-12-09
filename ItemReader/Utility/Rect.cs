@@ -1,4 +1,6 @@
-﻿namespace ItemReader.Utility
+﻿using ItemReader.Models;
+
+namespace ItemReader.Utility
 {
 
     public struct Rect {
@@ -20,14 +22,14 @@
             rectSize.Width = x2 - x;
             rectSize.Height = y2 - y;
         }
-        public Rect(Start start, End end, Dimensions size)
+        public Rect(TopLeftPointPos TopLeftPos, BottomRightPointPos BotRightPos, RectDimensions Dimensions)
         {
-            topLeft.X = start.x;
-            topLeft.Y = start.y;
-            bottomRight.X = end.x;
-            bottomRight.Y = end.y;
-            rectSize.Width = size.width;
-            rectSize.Height = size.height;
+            topLeft.X = TopLeftPos.X;
+            topLeft.Y = TopLeftPos.Y;
+            bottomRight.X = BotRightPos.X;
+            bottomRight.Y = BotRightPos.Y;
+            rectSize.Width = Dimensions.width;
+            rectSize.Height = Dimensions.height;
         }
 
         /* PRIVATE METHOD(S) */

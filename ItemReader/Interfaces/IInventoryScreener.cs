@@ -1,14 +1,18 @@
-﻿using ItemReader.Utility;
+﻿using ItemReader.InventoryScreener;
+using ItemReader.Models;
+using ItemReader.Utility;
 
 namespace ItemReader.Interfaces
 {
-    internal interface IInventoryScreener
-    {
-        bool isInventoryOpen();
-        void setGameWindow(IntPtr gameWindow);
-        void setWindowBounds(Rect windowBounds);
-        void setWindowInfo(IntPtr gameWindow, Rect windowBounds, AllCoordinates allCoordinates);
-        IEnumerable<Bitmap> GetFullInventory();
-        IEnumerable<Bitmap> GetEachItems(List<Bitmap> FullScreens);
+    internal interface IInventoryScreener {
+
+        public bool IsInventoryOpen();
+
+        public bool ProcessGameWindowInfo(IntPtr GameWindow, Rect GameWindowBounds, GenshinItemCoordinates GenshinItemsPos);
+
+        public GenshinInventoryScreenshots TakeInventoryScreenShots();
+
+        public IEnumerable<GenshinItem> SplitInventoryItems(GenshinInventoryScreenshots InventoryScreenShots);
+
     }
 }

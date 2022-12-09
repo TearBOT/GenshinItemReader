@@ -1,10 +1,10 @@
 {
-  "BagIconCoordinates": {
-    "start": {
+  "BagIconPos": {
+    "TopLeftPos": {
       "x": 56,
       "y": 48
     },
-    "end": {
+    "BotRightPos": {
       "x": 103,
       "y": 99
     },
@@ -13,13 +13,13 @@
       "height": 51
     }
   },
-  "ItemsCoordinates": [
+  "FirstLineItemsPos": [
     {
-      "start": {
+      "TopLeftPos": {
         "x": 122,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 244,
         "y": 269
       },
@@ -29,11 +29,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 268,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 390,
         "y": 269
       },
@@ -43,11 +43,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 414,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 536,
         "y": 269
       },
@@ -57,11 +57,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 561,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 683,
         "y": 269
       },
@@ -71,11 +71,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 707,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 829,
         "y": 269
       },
@@ -85,11 +85,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 854,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 976,
         "y": 269
       },
@@ -99,11 +99,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 1000,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 1122,
         "y": 269
       },
@@ -113,11 +113,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 1146,
         "y": 147
       },
-      "end": {
+      "BotRightPos": {
         "x": 1268,
         "y": 269
       },
@@ -127,13 +127,13 @@
       }
     }
   ],
-  "LastLineItemsCoordinates": [
+  "LastLineItemsPos": [
     {
-      "start": {
+      "TopLeftPos": {
         "x": 122,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 244,
         "y": 349
       },
@@ -143,11 +143,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 268,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 390,
         "y": 349
       },
@@ -157,11 +157,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 414,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 536,
         "y": 349
       },
@@ -171,11 +171,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 561,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 683,
         "y": 349
       },
@@ -185,11 +185,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 707,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 829,
         "y": 349
       },
@@ -199,11 +199,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 854,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 976,
         "y": 349
       },
@@ -213,11 +213,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 1000,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 1122,
         "y": 349
       },
@@ -227,11 +227,11 @@
       }
     },
     {
-      "start": {
+      "TopLeftPos": {
         "x": 1146,
         "y": 228
       },
-      "end": {
+      "BotRightPos": {
         "x": 1268,
         "y": 349
       },
@@ -241,12 +241,12 @@
       }
     }
   ],
-  "MoraCoordinates": {
-    "start": {
+  "MoraPos": {
+    "TopLeftPos": {
       "x": 395,
       "y": 1028
     },
-    "end": {
+    "BotRightPos": {
       "x": 560,
       "y": 1060
     },

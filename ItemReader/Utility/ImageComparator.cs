@@ -3,10 +3,7 @@
     internal class ImageComparator
     {
 
-        /* CLASS VARIABLE(S) */
         /* PUBLIC METHOD(S) */
-
-        public ImageComparator() { }
 
         public static bool ComapreImages(Bitmap img1, Bitmap img2)
         {
