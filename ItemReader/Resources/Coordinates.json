@@ -1,0 +1,258 @@
+{
+  "BagIconPos": {
+    "TopLeftPos": {
+      "X": 56,
+      "Y": 48
+    },
+    "BotRightPos": {
+      "X": 103,
+      "Y": 99
+    },
+    "Dimensions": {
+      "Width": 47,
+      "Height": 51
+    }
+  },
+  "FirstLineItemsPos": [
+    {
+      "TopLeftPos": {
+        "X": 122,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 244,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 268,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 390,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 414,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 536,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 561,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 683,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 707,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 829,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 854,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 976,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1000,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 1122,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1146,
+        "Y": 147
+      },
+      "BotRightPos": {
+        "X": 1268,
+        "Y": 269
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    }
+  ],
+  "LastLineItemsPos": [
+    {
+      "TopLeftPos": {
+        "X": 122,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 244,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 268,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 390,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 414,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 536,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 561,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 683,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 707,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 829,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 854,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 976,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1000,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 1122,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1146,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 1268,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    }
+  ],
+  "MoraPos": {
+    "TopLeftPos": {
+      "X": 395,
+      "Y": 1028
+    },
+    "BotRightPos": {
+      "X": 560,
+      "Y": 1060
+    },
+    "Dimensions": {
+      "Width": 165,
+      "Height": 32
+    }
+  }
+}
