@@ -1,12 +1,8 @@
 using ItemReader.Interfaces;
-using ItemReader.Models;
 using ItemReader.InventoryScreener;
-using ItemReader.Utility;
+using ItemReader.Models;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Drawing.Imaging;
-using System.Data;
 
 namespace ItemReader
 {
@@ -62,13 +58,13 @@ namespace ItemReader
                 return;
             }
 
-            // DEBUG
+#if DEBUG
             foreach (var Item in ItemList) {
                 var TimeStamp = $"{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}-{DateTime.Now.Millisecond}";
                 Item.ItemImage.Save($@"C:\Users\Mini-Soo\Projects\test\Images\test_{TimeStamp}.png", ImageFormat.Png);
                 Item.AmountImage.Save($@"C:\Users\Mini-Soo\Projects\test\Amounts\test_{TimeStamp}.png", ImageFormat.Png);
             }
-
+#endif
             WriteText(
                 "Over\n"
                 + "Your file can be found at"
@@ -166,10 +162,8 @@ namespace ItemReader
 
             var ItemList = _InventoryScreener.SplitInventoryItems(InventoryScreenshots);
 
-
             return ItemList;
         }
 
     }
-
 }

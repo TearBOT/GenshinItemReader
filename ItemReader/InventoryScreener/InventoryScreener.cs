@@ -1,6 +1,6 @@
 ﻿using ItemReader.Interfaces;
 using ItemReader.Models;
-using ItemReader.Utility;
+using ItemReader.Utils;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 
@@ -15,18 +15,32 @@ namespace ItemReader.InventoryScreener
         private Point _TopLeftItem;
         private Point _BottomLeftItem;
         private Point _SpecialitiesTabClick;
-
-        public GenshinItemCoordinates _GenshinItemCoordinates { get; set; }
-        public IntPtr _GameWindow { get; set; }
-        public Rect _GameWindowBounds { get; set; }
+        private GenshinItemCoordinates _GenshinItemCoordinates;
+        private IntPtr _GameWindow;
+        private Rect _GameWindowBounds;
 
         /* PUBLIC METHOD(S) */
 
-        public InventoryScreener() {}
-
-        public InventoryScreener(IntPtr gameWindow, Rect windowBounds, GenshinItemCoordinates GenshinItemsPos)
+        public bool IsInventoryOpen()
         {
-            ProcessGameWindowInfo(gameWindow, windowBounds, GenshinItemsPos);
+            Bitmap inventoryScreen = ScreenShotter.TakeCroppedScreenShot(
+                _GameWindow,
+                _GameWindowBounds,
+                new Rectangle(
+                    _GenshinItemCoordinates.BagIconPos.TopLeft,
+                    _GenshinItemCoordinates.BagIconPos.RectSize
+                    )
+                );
+            Bitmap BagIcon = new Bitmap(@"..\..\..\Resources\BagIcon.png"); 
+
+            bool Result = ImageComparator.ComapreImages(inventoryScreen, BagIcon);
+
+            if (inventoryScreen is not null) {
+                inventoryScreen.Dispose();
+            }
+            BagIcon.Dispose();
+
+            return Result;
         }
 
         public bool ProcessGameWindowInfo(IntPtr GameWindow, Rect GameWindowBounds, GenshinItemCoordinates GenshinItemsPos)
@@ -39,35 +53,24 @@ namespace ItemReader.InventoryScreener
             _GameWindowBounds = GameWindowBounds;
             _GenshinItemCoordinates = GenshinItemsPos;
 
-            _TopLeftItem = new Point(_GameWindowBounds.topLeft.X + 180, _GameWindowBounds.topLeft.Y + 180);
-            _BottomLeftItem = new Point(_GameWindowBounds.topLeft.X + 180, _GameWindowBounds.topLeft.Y + 900);
-            _MaterialTabClick = new Point(_GameWindowBounds.topLeft.X + 770, _GameWindowBounds.topLeft.Y + 65);
-            _SpecialitiesTabClick = new Point(_GameWindowBounds.topLeft.X + 960, _GameWindowBounds.topLeft.Y + 65);
-
-            return true;
-        }
-
-        public bool IsInventoryOpen()
-        {
-            Bitmap inventoryScreen = ScreenShotter.TakeCroppedScreenShot(
-                _GameWindow,
-                _GameWindowBounds,
-                new Rectangle(
-                    _GenshinItemCoordinates.BagIconPos.topLeft,
-                    _GenshinItemCoordinates.BagIconPos.rectSize
-                    )
+            _TopLeftItem = new Point(
+                _GameWindowBounds.TopLeft.X + 180,
+                _GameWindowBounds.TopLeft.Y + 180
+                );
+            _BottomLeftItem = new Point(
+                _GameWindowBounds.TopLeft.X + 180,
+                _GameWindowBounds.TopLeft.Y + 900
+                );
+            _MaterialTabClick = new Point(
+                _GameWindowBounds.TopLeft.X + 770,
+                _GameWindowBounds.TopLeft.Y + 65
+                );
+            _SpecialitiesTabClick = new Point(
+                _GameWindowBounds.TopLeft.X + 960,
+                _GameWindowBounds.TopLeft.Y + 65
                 );
 
-            Bitmap BagIcon = new Bitmap(@"..\..\..\Resources\BagIcon.png");
-
-            bool Result = ImageComparator.ComapreImages(inventoryScreen, BagIcon);
-
-            if (inventoryScreen != null) {
-                inventoryScreen.Dispose();
-            }
-            BagIcon.Dispose();
-
-            return Result;
+            return true;
         }
 
         public GenshinInventoryScreenshots TakeInventoryScreenShots()
@@ -114,44 +117,19 @@ namespace ItemReader.InventoryScreener
             return ItemList;
         }
 
-        private List<GenshinItem> ExtractItems(List<Bitmap> InventoryScreenshots)
-        {
-            List<GenshinItem> ItemList = new List<GenshinItem>();
-            int PixelShift = 0;
-
-            foreach (var InventoryScreenshot in InventoryScreenshots) {
-                for (int line = 0; line < 4; line++) {
-                    foreach (var ItemPos in _GenshinItemCoordinates.FirstLineItemsPos) {
-                        ItemList.Add(CreateGenshinItem(InventoryScreenshot, ItemPos, line, PixelShift));
-                    }
-                }
-
-                PixelShift--;
-
-                if (PixelShift % 4 == 0) {
-                    PixelShift--;
-                }
-            }
-
-            for (int line = 0; line < 4; line++) {
-                foreach (var ItemPos in _GenshinItemCoordinates.LastLineItemsPos) {
-                    ItemList.Add(CreateGenshinItem(InventoryScreenshots.Last(), ItemPos, line));
-                }
-            }
-
-            return ItemList;
-        }
-
         /* PRIVATE METHOD(S) */
 
         private IEnumerable<Bitmap> TakeScreenShotsInTab(Point TabToSelect, int loops)
         {
             List<Bitmap> FullScreens = new List<Bitmap>();
 
+            // Click on the tab you want to take screenshots of
             MouseEmulator.MouseLeftClick(_GameWindow, TabToSelect);
             Thread.Sleep(1000);
+            // Wait for the tab to load and scroll up after clicking on the first item
             MouseEmulator.MouseScrollUp(_GameWindow, _TopLeftItem, 400);
             Thread.Sleep(500);
+            // Wait for the scroll's velocity to settle down and click on the bottom left-most item
             MouseEmulator.MouseLeftClick(_GameWindow, _BottomLeftItem);
 
             for (var i = 0; i < loops; i++) {
@@ -179,6 +157,38 @@ namespace ItemReader.InventoryScreener
             return FullScreens;
         }
 
+        private List<GenshinItem> ExtractItems(List<Bitmap> InventoryScreenshots)
+        {
+            List<GenshinItem> ItemList = new List<GenshinItem>();
+            int PixelShift = 0;
+
+            // Loop for every screenshot of the inventory taken
+            foreach (var InventoryScreenshot in InventoryScreenshots) {
+                // Loop for every item line within that screenshot
+                for (int line = 0; line < 4; line++) {
+                    // Loop for every item within the line
+                    foreach (var ItemPos in _GenshinItemCoordinates.FirstLineItemsPos) {
+                        ItemList.Add(CreateGenshinItem(InventoryScreenshot, ItemPos, line, PixelShift));
+                    }
+                }
+                // Genshin's inventory is shit so you need to shift the pixels with every "scroll"
+                // otherwise you'd scroll too much and end up getting the item's value in the "ItemImage" part
+                PixelShift--;
+                if (PixelShift % 4 == 0) {
+                    PixelShift--;
+                }
+            }
+
+            // Same loop as above but for the end of the inventory
+            for (int line = 0; line < 4; line++) {
+                foreach (var ItemPos in _GenshinItemCoordinates.LastLineItemsPos) {
+                    ItemList.Add(CreateGenshinItem(InventoryScreenshots.Last(), ItemPos, line));
+                }
+            }
+
+            return ItemList;
+        }
+
         private GenshinItem CreateGenshinItem(Bitmap InventoryScreenshot, Rect ItemPos, int line, int PixelShift = 0)
         {
             // Pixel offset in case there is a "NEW" on the item
@@ -190,25 +200,25 @@ namespace ItemReader.InventoryScreener
             return new GenshinItem(
                 InventoryScreenshot.Clone(
                     new Rectangle(
-                        ItemPos.topLeft.X,
-                        ItemPos.topLeft.Y
+                        ItemPos.TopLeft.X,
+                        ItemPos.TopLeft.Y
                             + 175 * line
                             + OffsetForNew
                             + PixelShift,
-                        ItemPos.rectSize.Width,
-                        ItemPos.rectSize.Height - OffsetForNew
+                        ItemPos.RectSize.Width,
+                        ItemPos.RectSize.Height - OffsetForNew
                         ),
                     PixelFormat.Format32bppArgb
                     ),
                 InventoryScreenshot.Clone(
                     new Rectangle(
-                        ItemPos.topLeft.X,
-                        ItemPos.topLeft.Y
+                        ItemPos.TopLeft.X,
+                        ItemPos.TopLeft.Y
                             + 175 * line
-                            + ItemPos.rectSize.Height
+                            + ItemPos.RectSize.Height
                             + OffsetForAmount
                             + PixelShift,
-                        ItemPos.rectSize.Width,
+                        ItemPos.RectSize.Width,
                         20
                         ),
                     PixelFormat.Format32bppArgb

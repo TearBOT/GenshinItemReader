@@ -3,11 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace ItemReader.InventoryScreener
 {
-
-    internal class MouseEmulator
-    {
-
-        // https://stackoverflow.com/questions/37262822/c-sharp-simulate-mouse-wheel-down
+    internal static class MouseEmulator {
 
         /* CLASS VARIABLE(S) */
 
@@ -17,38 +13,38 @@ namespace ItemReader.InventoryScreener
 
         /* PUBLIC METHOD(S) */
 
-        public MouseEmulator()
-        { }
-
-        public static void MouseLeftClick(IntPtr gameWindow, Point coord)
+        public static void MouseLeftClick(IntPtr gameWindow, Point Pos)
         {
             SetForegroundWindow(gameWindow);
-            SetCursorPos(coord.X, coord.Y);
-            mouse_event(MOUSEEVENTF_LEFTDOWN, coord.X, coord.Y, 0, 0);
+
+            SetCursorPos(Pos.X, Pos.Y);
+
+            mouse_event(MOUSEEVENTF_LEFTDOWN, Pos.X, Pos.Y, 0, 0);
             Thread.Sleep(80);
-            mouse_event(MOUSEEVENTF_LEFTUP, coord.X, coord.Y, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, Pos.X, Pos.Y, 0, 0);
         }
-        public static void MouseScrollUp(IntPtr gameWindow, Point coord, int loop = 1)
+
+        public static void MouseScrollUp(IntPtr gameWindow, Point Pos, int loop = 1)
         {
-            MouseLeftClick(gameWindow, coord);
-            for (int i = 0; i < loop; i++)
-            {
+            MouseLeftClick(gameWindow, Pos);
+
+            for (int i = 0; i < loop; i++) {
                 Thread.Sleep(10);
                 mouse_event(MOUSEEVENTF_WHEEL, 0, 0, (int)ScrollDirection.UP, 0);
             }
         }
 
-        public static void MouseScrollDown(IntPtr gameWindow, Point coord, int loop = 1)
+        public static void MouseScrollDown(IntPtr gameWindow, Point Pos, int loop = 1)
         {
-            MouseLeftClick(gameWindow, coord);
-            for (int i = 0; i < loop; i++)
-            {
+            MouseLeftClick(gameWindow, Pos);
+
+            for (int i = 0; i < loop; i++) {
                 Thread.Sleep(10);
                 mouse_event(MOUSEEVENTF_WHEEL, 0, 0, (int)ScrollDirection.DOWN, 0);
             }
         }
 
-        /* PRIVATE METHOD(S) */
+        /* USER32.DLL(S) */
 
         [DllImport("user32.dll")]
         private static extern IntPtr SetForegroundWindow(IntPtr ptr);

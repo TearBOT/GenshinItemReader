@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ItemReader.InventoryScreener
+﻿namespace ItemReader.InventoryScreener
 {
-    internal class GenshinInventoryScreenshots
-    {
-        public List<Bitmap> MaterialTab { get; set; }
+    internal class GenshinInventoryScreenshots {
 
+        /* CLASS VARIABLE(S) */
+
+        public List<Bitmap> MaterialTab { get; set; }
         public List<Bitmap> SpecialitiesTab { get; set; }
 
     }

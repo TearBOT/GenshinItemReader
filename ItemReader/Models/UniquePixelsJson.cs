@@ -5,7 +5,7 @@ namespace ItemReader.Models
 
     public class UniquePixelsJson {
         [JsonProperty("name")]
-        public string Item { get; set; }
+        public string ItemName { get; set; }
 
         [JsonProperty("uniques")]
         public List<Pixel> Pixels { get; set; }
@@ -31,11 +31,7 @@ namespace ItemReader.Models
     }
 
     public class Coord {
-
-        [JsonProperty("x")]
         public int X { get; set; }
-
-        [JsonProperty("y")]
         public int Y { get; set; }
 
     }

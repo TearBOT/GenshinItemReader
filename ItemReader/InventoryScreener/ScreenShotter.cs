@@ -1,7 +1,6 @@
-﻿using System.Drawing.Imaging;
+﻿using ItemReader.Utils;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using ItemReader.Models;
-using ItemReader.Utility;
 
 namespace ItemReader.InventoryScreener
 {
@@ -12,7 +11,8 @@ namespace ItemReader.InventoryScreener
 
         public static Bitmap TakeScreenShot(IntPtr GameWindow, Rect GameWindowBounds)
         {
-            if (GameWindow == IntPtr.Zero || GameWindowBounds.topLeft.IsEmpty) {
+            if (GameWindow == IntPtr.Zero
+                || GameWindowBounds.TopLeft.IsEmpty) {
                 return null;
             }
 
@@ -22,37 +22,45 @@ namespace ItemReader.InventoryScreener
             Thread.Sleep(100);
 
             Bitmap screenShot = new Bitmap(
-                GameWindowBounds.rectSize.Width,
-                GameWindowBounds.rectSize.Height
+                GameWindowBounds.RectSize.Width,
+                GameWindowBounds.RectSize.Height
             );
 
             using (Graphics captureGraphics = Graphics.FromImage(screenShot))
             {
-                captureGraphics.CopyFromScreen(GameWindowBounds.topLeft, Point.Empty, screenShot.Size);
+                captureGraphics.CopyFromScreen(
+                    GameWindowBounds.TopLeft,
+                    Point.Empty,
+                    screenShot.Size
+                    );
                 captureGraphics.Dispose();
             }
 
-            // DEBUG
+#if DEBUG
             var TimeStamp = $"{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}-{DateTime.Now.Millisecond}";
             screenShot.Save($@"C:\Users\Mini-Soo\Projects\test\test_{TimeStamp}.png", ImageFormat.Png);
+#endif
 
             return screenShot;
         }
 
         public static Bitmap TakeCroppedScreenShot(IntPtr gameWindow, Rect windowBounds, Rectangle PartToCrop)
         {
-            if (gameWindow == IntPtr.Zero || windowBounds.topLeft.IsEmpty || PartToCrop.IsEmpty)
+            if (gameWindow == IntPtr.Zero
+                || windowBounds.TopLeft.IsEmpty
+                || PartToCrop.IsEmpty) {
                 return null;
+            }
 
             Bitmap fullScreen = TakeScreenShot(gameWindow, windowBounds);
             Bitmap partialScreen = fullScreen.Clone(PartToCrop, PixelFormat.Format32bppArgb);
 
             fullScreen.Dispose();
 
-            // DEBUG
+#if DEBUG
             var TimeStamp = $"{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}-{DateTime.Now.Millisecond}";
             partialScreen.Save($@"C:\Users\Mini-Soo\Projects\test\test_{TimeStamp}.png", ImageFormat.Png);
-
+#endif
             return partialScreen;
         }
 

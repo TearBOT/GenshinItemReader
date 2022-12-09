@@ -1,6 +1,6 @@
 ﻿using ItemReader.InventoryScreener;
 using ItemReader.Models;
-using ItemReader.Utility;
+using ItemReader.Utils;
 
 namespace ItemReader.Interfaces
 {

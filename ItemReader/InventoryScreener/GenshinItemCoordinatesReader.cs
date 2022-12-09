@@ -1,14 +1,15 @@
 ﻿using ItemReader.Models;
-using ItemReader.Utility;
+using ItemReader.Utils;
 using Newtonsoft.Json;
 
 namespace ItemReader.InventoryScreener
 {
     internal static class GenshinItemCoordinatesReader {
 
+        /* PUBLIC METHOD(S) */
+
         public static GenshinItemCoordinates EvaluateAllItemsPositions()
         {
-            // C:\Users\Mini-Soo\Projects\GenshinItemReader\ItemReader\bin\Debug\net7.0-windows\Resources\Coordinates.json
             string jsonString = File.ReadAllText(@"..\..\..\Resources\Coordinates.json");
             GenshinCoordinatesJson JsonData = JsonConvert.DeserializeObject<GenshinCoordinatesJson>(jsonString);
 
@@ -33,6 +34,8 @@ namespace ItemReader.InventoryScreener
             return ItemsPosData;
         }
 
+        /* PRIVATE METHOD(S) */
+
         private static List<Rect> ProcessItemsPosFromJson(IEnumerable<ItemsPos> ItemLine)
         {
             var ItemsPosList = new List<Rect>();
@@ -43,5 +46,6 @@ namespace ItemReader.InventoryScreener
 
             return ItemsPosList;
         }
+
     }
 }

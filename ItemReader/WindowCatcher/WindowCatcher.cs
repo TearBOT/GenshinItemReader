@@ -1,7 +1,6 @@
-﻿using System.Runtime.InteropServices;
-
-using ItemReader.Interfaces;
-using ItemReader.Utility;
+﻿using ItemReader.Interfaces;
+using ItemReader.Utils;
+using System.Runtime.InteropServices;
 
 namespace ItemReader.WindowCatcher
 {
@@ -34,9 +33,11 @@ namespace ItemReader.WindowCatcher
                 TmpRect.Height
                 );
 
-            if (GameWindow != IntPtr.Zero && GameWindowBounds.topLeft != Point.Empty) {
+            if (GameWindow != IntPtr.Zero
+                && GameWindowBounds.TopLeft != Point.Empty) {
                 return true;
             }
+
             return false;
         }
 
