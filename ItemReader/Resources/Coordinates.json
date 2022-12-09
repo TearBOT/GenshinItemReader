@@ -1,258 +1,258 @@
 {
-  "BagIconCoordinates": {
-    "start": {
-      "x": 56,
-      "y": 48
+  "BagIconPos": {
+    "TopLeftPos": {
+      "X": 56,
+      "Y": 48
     },
-    "end": {
-      "x": 103,
-      "y": 99
+    "BotRightPos": {
+      "X": 103,
+      "Y": 99
     },
-    "dimensions": {
-      "width": 47,
-      "height": 51
+    "Dimensions": {
+      "Width": 47,
+      "Height": 51
     }
   },
-  "ItemsCoordinates": [
+  "FirstLineItemsPos": [
     {
-      "start": {
-        "x": 122,
-        "y": 147
+      "TopLeftPos": {
+        "X": 122,
+        "Y": 147
       },
-      "end": {
-        "x": 244,
-        "y": 269
+      "BotRightPos": {
+        "X": 244,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 268,
-        "y": 147
+      "TopLeftPos": {
+        "X": 268,
+        "Y": 147
       },
-      "end": {
-        "x": 390,
-        "y": 269
+      "BotRightPos": {
+        "X": 390,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 414,
-        "y": 147
+      "TopLeftPos": {
+        "X": 414,
+        "Y": 147
       },
-      "end": {
-        "x": 536,
-        "y": 269
+      "BotRightPos": {
+        "X": 536,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 561,
-        "y": 147
+      "TopLeftPos": {
+        "X": 561,
+        "Y": 147
       },
-      "end": {
-        "x": 683,
-        "y": 269
+      "BotRightPos": {
+        "X": 683,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 707,
-        "y": 147
+      "TopLeftPos": {
+        "X": 707,
+        "Y": 147
       },
-      "end": {
-        "x": 829,
-        "y": 269
+      "BotRightPos": {
+        "X": 829,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 854,
-        "y": 147
+      "TopLeftPos": {
+        "X": 854,
+        "Y": 147
       },
-      "end": {
-        "x": 976,
-        "y": 269
+      "BotRightPos": {
+        "X": 976,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 1000,
-        "y": 147
+      "TopLeftPos": {
+        "X": 1000,
+        "Y": 147
       },
-      "end": {
-        "x": 1122,
-        "y": 269
+      "BotRightPos": {
+        "X": 1122,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     },
     {
-      "start": {
-        "x": 1146,
-        "y": 147
+      "TopLeftPos": {
+        "X": 1146,
+        "Y": 147
       },
-      "end": {
-        "x": 1268,
-        "y": 269
+      "BotRightPos": {
+        "X": 1268,
+        "Y": 269
       },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    }
-  ],
-  "LastLineItemsCoordinates": [
-    {
-      "start": {
-        "x": 122,
-        "y": 228
-      },
-      "end": {
-        "x": 244,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 268,
-        "y": 228
-      },
-      "end": {
-        "x": 390,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 414,
-        "y": 228
-      },
-      "end": {
-        "x": 536,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 561,
-        "y": 228
-      },
-      "end": {
-        "x": 683,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 707,
-        "y": 228
-      },
-      "end": {
-        "x": 829,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 854,
-        "y": 228
-      },
-      "end": {
-        "x": 976,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 1000,
-        "y": 228
-      },
-      "end": {
-        "x": 1122,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
-      }
-    },
-    {
-      "start": {
-        "x": 1146,
-        "y": 228
-      },
-      "end": {
-        "x": 1268,
-        "y": 349
-      },
-      "dimensions": {
-        "width": 123,
-        "height": 123
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
       }
     }
   ],
-  "MoraCoordinates": {
-    "start": {
-      "x": 395,
-      "y": 1028
+  "LastLineItemsPos": [
+    {
+      "TopLeftPos": {
+        "X": 122,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 244,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
     },
-    "end": {
-      "x": 560,
-      "y": 1060
+    {
+      "TopLeftPos": {
+        "X": 268,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 390,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
     },
-    "dimensions": {
-      "width": 165,
-      "height": 32
+    {
+      "TopLeftPos": {
+        "X": 414,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 536,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 561,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 683,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 707,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 829,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 854,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 976,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1000,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 1122,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    },
+    {
+      "TopLeftPos": {
+        "X": 1146,
+        "Y": 228
+      },
+      "BotRightPos": {
+        "X": 1268,
+        "Y": 349
+      },
+      "Dimensions": {
+        "Width": 123,
+        "Height": 123
+      }
+    }
+  ],
+  "MoraPos": {
+    "TopLeftPos": {
+      "X": 395,
+      "Y": 1028
+    },
+    "BotRightPos": {
+      "X": 560,
+      "Y": 1060
+    },
+    "Dimensions": {
+      "Width": 165,
+      "Height": 32
     }
   }
 }

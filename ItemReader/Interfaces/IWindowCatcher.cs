@@ -1,18 +1,17 @@
-﻿using ItemReader.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ItemReader.Utils;
 
 namespace ItemReader.Interfaces
 {
-    internal interface IWindowCatcher
-    {
-        string testMessage();
-        bool catchGameWindow();
-        IntPtr getGameWindow();
-        Rect getWindowBouds();
+    internal interface IWindowCatcher {
+
+        /* CLASS VARIABLE(S) */
+
+        public IntPtr GameWindow { get; set; }
+        public Rect GameWindowBounds { get; set; }
+
+        /* PUBLIC METHOD(S) */
+
+        public bool IsGameWindowOpen(string GameWindowName);
+
     }
 }

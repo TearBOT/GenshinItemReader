@@ -1,60 +1,47 @@
-﻿using System.Runtime.InteropServices;
-
-using ItemReader.Interfaces;
-using ItemReader.Utility;
+﻿using ItemReader.Interfaces;
+using ItemReader.Utils;
+using System.Runtime.InteropServices;
 
 namespace ItemReader.WindowCatcher
 {
-    internal class WindowCatcher : IWindowCatcher
-    {
-        private IntPtr _gameWindow;
-        private Rect _windowBounds;
+    internal class WindowCatcher : IWindowCatcher {
 
-        public WindowCatcher()
-        { }
+        /* CLASS VARIABLE(S) */
 
-        public string testMessage()
-        {
-            return ("Hello World");
-        }
+        public IntPtr GameWindow { get; set; }
+        public Rect GameWindowBounds { get; set; }
 
-        public IntPtr getGameWindow()
-        {
-            return _gameWindow;
-        }
-        public Rect getWindowBouds()
-        {
-            return _windowBounds;
-        }
+        /* PUBLIC METHOD(S) */
 
-        private void setGameWindow(IntPtr gameWindow)
+        public bool IsGameWindowOpen(string GameWindowName)
         {
-            _gameWindow = gameWindow;
-        }
+            GameWindow = FindWindow(IntPtr.Zero, GameWindowName);
+            if (GameWindow == IntPtr.Zero) {
+                return false;
+            }
 
-        public bool catchGameWindow()
-        {
-            do
-            {
-                _gameWindow = FindWindow(IntPtr.Zero, Resources.Resources.GAME_WINDOW);
-                Thread.Sleep(1000);
-            } while (_gameWindow.ToInt32() == 0);
-            Rectangle tmpBound;
-            do
-            {
-                GetWindowRect(_gameWindow, out tmpBound);
-                Thread.Sleep(1000);
-            } while (tmpBound.X < 0);
-            _windowBounds = new Rect(tmpBound.X, tmpBound.Y, tmpBound.Width, tmpBound.Height);
-            if (_gameWindow != IntPtr.Zero && _windowBounds.topLeft != Point.Empty) {
+            var TmpRect = new Rectangle(0, 0, 0, -1);
+            while (TmpRect.Height <= 0) {
+                GetWindowRect(GameWindow, out TmpRect);
+                Thread.Sleep(100);
+            }
+
+            GameWindowBounds = new Rect(
+                TmpRect.X,
+                TmpRect.Y,
+                TmpRect.Width,
+                TmpRect.Height
+                );
+
+            if (GameWindow != IntPtr.Zero
+                && GameWindowBounds.TopLeft != Point.Empty) {
                 return true;
             }
+
             return false;
         }
 
-        public void Dispose() { }
-        public void Show() { }
-        public void Hide() { }
+        /* USER32.DLL */
 
         [DllImport("user32.dll")]
         private static extern IntPtr FindWindow(IntPtr ptr, string lpWindowName);
